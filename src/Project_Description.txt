@@ -1,0 +1,95 @@
+# EndStock Project Description
+
+## Overview
+A Vue.js-based web application that provides real-time stock investment recommendations using a hybrid approach of machine learning and technical analysis. The application combines historical data training with real-time market data to deliver up-to-the-minute investment insights.
+
+## Technical Architecture
+
+### 1. Machine Learning Component
+- Training based on comprehensive stock market dataset (1962-2024)
+- Feature engineering incorporating technical indicators and market patterns
+- Model conversion to TensorFlow.js for browser-based execution
+- Regular model retraining to adapt to market changes
+
+### 2. Real-Time Analysis
+- Integration with financial APIs (Alpha Vantage/Yahoo Finance)
+- Live technical indicator calculations
+- Browser-based scoring system
+- Intelligent caching and rate limiting
+
+### 3. Frontend Stack
+- Vue.js for UI components
+- TensorFlow.js for model execution
+- Technical analysis libraries
+- Chart.js for data visualization
+- TailwindCSS for styling
+
+## Development Phases
+
+### Phase 1: Model Development (Current Phase)
+- Data preprocessing and feature engineering
+- Initial model training and validation
+- Model optimization and conversion for web use
+- Performance testing and validation
+
+### Phase 2: Real-Time Integration
+- API integration setup
+- Technical analysis implementation
+- Score computation pipeline
+- Caching and optimization
+
+### Phase 3: Frontend Development
+- User interface components
+- Real-time data visualization
+- Score display and interpretation
+- Performance optimization
+
+### Phase 4: Testing and Deployment
+- Model accuracy validation
+- Real-time performance testing
+- User experience optimization
+- GitHub Pages deployment
+
+## Technical Components
+
+### Data Sources
+- Historical training data (9000+ tickers, 1962-2024)
+- Real-time market data via APIs
+- Technical indicators and derived features
+
+### Key Features
+- Real-time stock analysis
+- Machine learning-based scoring
+- Technical indicator visualization
+- Historical performance comparison
+- Mobile-responsive design
+
+### Development Tools
+- Python for model training
+- TensorFlow/scikit-learn for ML
+- Vue.js for frontend
+- GitHub Actions for automation
+- Financial APIs for real-time data
+
+## Next Steps
+
+1. Begin model development phase:
+   - Set up development environment
+   - Preprocess historical dataset
+   - Engineer initial features
+   - Train baseline model
+
+2. Success Metrics:
+   - Model accuracy on historical data
+   - Real-time computation performance
+   - API response times
+   - User experience metrics
+
+## Use Cases
+- Real-time investment decision support
+- Technical analysis visualization
+- Historical pattern recognition
+- Market trend identification
+- Educational tool for market analysis
+
+This project combines advanced machine learning techniques with real-time market data to create an accessible, browser-based tool for stock market analysis. The hybrid approach ensures both historical pattern recognition and current market conditions are considered in generating investment insights.

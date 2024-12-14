@@ -1,85 +1,65 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import { ref, onMounted } from 'vue'
+
+const tiles = ref([])
+
+onMounted(() => {
+  // Generate random grayscale values for each tile
+  tiles.value = Array.from({ length: 1400 }, () => {
+    const baseColor = 100
+    const variance = Math.floor(Math.random() * 50) - 100
+    return baseColor + variance
+  })
+})
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 relative">
+    <!-- Pattern Background -->
+    <!-- Try these different class combinations for different tile sizes: -->
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <!-- Extra Small Tiles (32px) -->
+    <!-- <div class="fixed inset-0 grid grid-cols-[repeat(auto-fill,minmax(32px,1fr))] gap-0.5"> -->
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <div class="fixed inset-0 grid grid-cols-[repeat(auto-fill,minmax(48px,1fr))] gap-0.5">
+      <div
+        v-for="(gray, index) in tiles"
+        :key="index"
+        class="aspect-square transition-colors duration-1000"
+        :style="{
+          backgroundColor: `rgb(${gray + 100}, ${gray + 100}, ${gray + 100})`,
+          opacity: '0.2',
+        }"
+      ></div>
     </div>
-  </header>
 
-  <RouterView />
+    <!-- Main Content -->
+    <div class="relative">
+      <RouterView />
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative text-center py-6 text-sm text-gray-500 dark:text-gray-400">
+      <p>© {{ new Date().getFullYear() }} EndStock. Market data for educational purposes only.</p>
+    </footer>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+html {
+  scroll-behavior: smooth;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 </style>
